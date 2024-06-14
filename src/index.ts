@@ -6,6 +6,7 @@ import limiter from "./lib/rateLimitConfig";
 import CheckError from "./lib/checkError";
 import errorHandler from "./middleware/errorMiddleware";
 import authRoutes from "./router/authRoutes";
+import userRoutes from "./router/userRoutes";
 import corsOptions from "./lib/corsConfig";
 
 const app: Express = express();
@@ -17,9 +18,11 @@ app.use(limiter);
 
 app.get("/", (req, res) => {
   res.status(200).json({ success: true });
-  });
-  
-app.use("/api/v0.1/auth", authRoutes);  
+});
+
+app.use("/api/v0.1/auth", authRoutes);
+app.use("/api/v0.1/users", userRoutes);
+
 app.all("*", (req: Request, res: Response, next: NextFunction) => {
   next(new CheckError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
