@@ -22,6 +22,7 @@ export const sendEmail = async (userId: string) => {
       data: {
         authorId: user.id,
         otp: token,
+        expireAt: new Date(Date.now() + 5 * 60 * 1000),
       },
     });
 

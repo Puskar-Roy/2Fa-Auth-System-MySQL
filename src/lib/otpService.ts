@@ -26,6 +26,7 @@ export const sendOTP = async (userId: string) => {
       data: {
         otp: token,
         authorId: user.id,
+        expireAt: new Date(Date.now() + 5 * 60 * 1000),
       },
     });
     const mailOptions = {

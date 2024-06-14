@@ -59,10 +59,10 @@ export const verifyEmail = async (req: Request, res: Response) => {
   if (!verificationToken)
     return res.status(404).json({ success: false, message: "Invalid token" });
 
-//   if (verificationToken.expireTime < new Date())
-//     return res
-//       .status(400)
-//       .json({ success: false, message: "Token has expired" });
+    if (verificationToken.expireAt < new Date())
+      return res
+        .status(400)
+        .json({ success: false, message: "Token has expired" });
 
   if (verificationToken.authorId !== userId) {
     return res.status(403).json({ success: false, message: "Unauthorized" });
@@ -126,10 +126,10 @@ export const verifyOTP = async (req: Request, res: Response) => {
   if (!verificationToken)
     return res.status(404).json({ success: false, message: "Invalid token" });
 
-//   if (verificationToken.expiresAt < new Date())
-//     return res
-//       .status(400)
-//       .json({ success: false, message: "Token has expired" });
+  if (verificationToken.expireAt < new Date())
+    return res
+      .status(400)
+      .json({ success: false, message: "Token has expired" });
 
   await prisma.oTP.delete({ where: { id: verificationToken.id } });
   const user = await prisma.user.findUnique({
