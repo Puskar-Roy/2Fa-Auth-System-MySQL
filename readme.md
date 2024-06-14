@@ -25,6 +25,28 @@
 
 ## Getting Started 🚀
 
+
+
+### API End Points
+
+### 1. Authentication Routes
+```bash
+/api/v0.1/auth/register                                   POST               //for register
+/api/v0.1/auth/verify-email/:userId?token=tokens          GET                //for forgot password
+/api/v0.1/auth/login                                      POST               //for login
+/api/v0.1/auth/verify-otp/:userId?token=548651            POST               //for reset password 
+```
+
+### 2. Users Routes
+
+```bash
+/api/v0.1/users                                           GET                //for all users
+/api/v0.1/users/:id                                       GET                //for a single user
+/api/v0.1/users/:id                                       DELETE             //for delete a user
+/api/v0.1/users/:id                                       PUT                //for update a user
+```
+
+
 ### Prerequisites
 
 Before you begin contributing to this project, make sure you have the following set up:
