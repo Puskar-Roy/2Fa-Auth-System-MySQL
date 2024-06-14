@@ -1,16 +1,16 @@
-import { Request, Response, NextFunction } from "express";
-import CheckError from "../lib/checkError";
+import { Request, Response, NextFunction } from 'express'
+import CheckError from '../lib/checkError'
 
 const errorHandler = (
-  err: CheckError,
-  req: Request,
-  res: Response,
-  next: NextFunction
+    err: CheckError,
+    req: Request,
+    res: Response,
+    next: NextFunction
 ) => {
-  res.status(err.statusCode || 500).json({
-    success: false,
-    error: err.message || "Internal Server Error",
-  });
-};
+    res.status(err.statusCode || 500).json({
+        success: false,
+        error: err.message || 'Internal Server Error',
+    })
+}
 
-export default errorHandler;
+export default errorHandler
