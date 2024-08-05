@@ -18,7 +18,7 @@ app.use(limiter)
 
 app.get('/', (req, res) => {
     res.status(200).json({ success: true })
-})
+});
 
 app.use('/api/v0.1/auth', authRoutes)
 app.use('/api/v0.1/users', userRoutes)
