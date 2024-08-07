@@ -4,7 +4,7 @@ import { config } from '../config/config'
 import prisma from '../config/prismaConfig'
 
 export const generateOTP = (): string => {
-    const otp = randomInt(100000, 1000000)
+    const otp = randomInt(100000, 1000000);
     return otp.toString()
 }
 
@@ -33,10 +33,10 @@ export const sendOTP = async (userId: string) => {
             from: 'puskarroy300@gmail.com',
             to: user.email,
             subject: 'OTP For Login',
-            html: ` <h2 style="font-family: Arial, sans-serif; line-height: 1.6;">Hey ${user.name} 👋,Verify Your OTP For Login, This Is Your OTP - ${token}</h2>
+            html: ` <h2 style="font-family: Arial, sans-serif; line-height: 1.6;">Hey ${user.name} 👋, Verify Your OTP For Login, This Is Your OTP - ${token}</h2>
 
   <h4 style="font-family: Arial, sans-serif; line-height: 1.6;">Please note that this link will expire in 10 minutes. If you did not request this verification, you can safely ignore this email.</h4>
-  <h3 style="font-family: Arial, sans-serif; line-height: 1.6;">Thank you,<br>Puskar Roy - E learning Platform!</h3>`,
+  <h3 style="font-family: Arial, sans-serif; line-height: 1.6;">Thank you,<br>Puskar Roy</h3>`,
         }
 
         await transporter.sendMail(mailOptions)
