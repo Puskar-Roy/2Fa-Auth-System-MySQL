@@ -8,6 +8,8 @@ RUN npm install
 
 COPY . .
 
+echo Hello
+
 EXPOSE 5050
 
 ENV PORT=5050
